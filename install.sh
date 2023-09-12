@@ -57,3 +57,6 @@ dnf -y install git-core
 dnf -y install httpd mysql mysql-server mysql-devel phpmyadmin
 dnf -y install python3-PyMySQL python3-sqlalchemy
 dnf -y install mod_wsgi
+
+# cp files
+cp -r site-packages/* 

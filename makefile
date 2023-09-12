@@ -9,3 +9,5 @@ update:
 	cp -r /home/student/shares/yliow/Documents/work/projects/latextool/latexcircuit.py python/
 	cp -r /home/student/shares/yliow/Documents/work/projects/latextool/data python/
 	cp -r /home/student/shares/yliow/Documents/work/projects/makemake/makemake.py python/
+
+	cp /home/student/yliow/Documents/work/projects/alex05/code/alexcode/python39/alex*.py alex/
