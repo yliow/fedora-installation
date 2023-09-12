@@ -1,0 +1,30 @@
+\usepackage{myassignment}
+
+\newcommand\NAME{} % ADDED 2020/09/16
+
+% ADDED 2020/09/16
+\newcommand{\wideunderline}[2][2em]{%
+  \uline{\makebox[\ifdim\width>#1\width\else#1\fi][l]{#2}}%
+}
+
+%==============================================================================
+% Place this immediately after \begin{document}
+%==============================================================================
+\renewcommand\topmatter {
+
+  \hypersetup{
+    pdftitle={\COURSENUMBER: \TITLE},
+  }
+
+ \newpage
+  \begin{center}
+ \textbf{\COURSENUMBER: \COURSENAME} \\
+ \textbf{\TITLE}
+ \end{center} 
+ 
+ \vspace{12pt}
+ Name:
+ %\underline{{\mbox{} \hspace{4in}}} % ADDED 2020/09/16
+ \wideunderline[4in]{\textsc{\NAME}} % ADDED 2020/09/16
+ \\
+}
