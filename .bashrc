@@ -15,3 +15,7 @@ alias x="emacs"
 alias e="emacs"
 alias m="make"
 alias alex='python /home/student/.alex/alexrunner.py'
+
+export EDITOR='emacs'
+
+umask 077
