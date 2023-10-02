@@ -16,7 +16,7 @@ dnf -y install wget
 
 # Development tools 
 dnf -y install autoconf automake libtool python-devel zlib 
-dnf -y python3-devel zlib 
+dnf -y python3-devel zlib #############################ERROR???
 dnf -y install gdb ddd meld
 
 # CISS145
@@ -57,3 +57,23 @@ dnf -y install git-core
 dnf -y install httpd mysql mysql-server mysql-devel phpmyadmin
 dnf -y install python3-PyMySQL python3-sqlalchemy
 dnf -y install mod_wsgi
+
+
+# installing files where they need to be
+cp .bashrc ~/.bashrc
+cp -r .emacs ~/.emacs 
+
+#NEED TO CHECK F31 for what files need rwx access and optimize this part
+if [ -d "/usr/share/texlive/texmf-local/tex/latex" ]; then 
+    # It's a directory!
+    # Directory command goes here.
+    cp -r latex  /usr/share/texlive/texmf-local/tex/latex/yliow
+    chmod +rwx /usr/share/texlive/texmf-local/tex/latex/yliow
+else
+    echo "FAILED... NO TEX(latex) DETECTED"
+fi
+
+cp -r ./python/* /usr/lib/python*.*/site-packages/
+chmod +rwx /usr/lib/python*.*/site-packages/
+cp -r ./python/* /usr/lib64/python*.*/site-packages/
+chmod +rwx /usr/lib64/python*.*/site-packages/
