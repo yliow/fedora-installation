@@ -47,10 +47,14 @@ dnf -y remove hexchat thunderbird
 #################################################################
 
 # CISS445
-dnf -y install ocaml
+dnf -y install opam
+opam init
+eval `opam config env`
+opam install -y core ocaml utop
 
 # CISS380 (+ SDL)
 dnf -y install freeglut freeglut-devel glew glew-devel
+# NEED TO CHECK IF I NEED TO ADD ANYTHING
 
 # Software Development tools
 dnf -y install git-core
@@ -77,3 +81,4 @@ cp -r ./python/* /usr/lib/python*.*/site-packages/
 chmod +rwx /usr/lib/python*.*/site-packages/
 cp -r ./python/* /usr/lib64/python*.*/site-packages/
 chmod +rwx /usr/lib64/python*.*/site-packages/
+#NEED TO ADD ALEX
