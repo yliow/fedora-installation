@@ -16,24 +16,25 @@
 % Command chars are \...~....@. Example: \underline~foo@
 %------------------------------------------------------------------------------
 \newcommand\includesource[1] {
-\VerbatimInput[frame=single, numbers=left]
-{#1}
+\VerbatimInput[frame=single,numbers=left,fontsize=\footnotesize]{#1}
 }
+
 \newcommand\includesourcenonumbers[1] {
-\VerbatimInput[frame=single]
-{#1}
+\VerbatimInput[frame=single,fontsize=\footnotesize]{#1}
 }
 
 \newcommand\includesourcenonumberslabel[1] {
-\VerbatimInput[frame=single]
-{#1}\vspace{-0.5cm}\begin{center}{{\scriptsize \texttt{#1}}}\end{center}}
+\VerbatimInput[frame=single,fontsize=\footnotesize]{#1}
+\vspace{-0.5cm}
+\begin{center}{{\scriptsize \texttt{#1}}}\end{center} % warning: texttt might cause problem with underscore ... $$ issue
+}
 
 %------------------------------------------------------------------------------
 % Verbatim for console window - single line frame, no line numbers
 %------------------------------------------------------------------------------
 \DefineVerbatimEnvironment%
  {console}{Verbatim}
- {frame=single}
+ {frame=single,fontsize=\footnotesize}
 
 \DefineVerbatimEnvironment%
  {smallconsole}{Verbatim}
@@ -55,7 +56,7 @@
 %------------------------------------------------------------------------------
 \usepackage{atbeginend}
 \BeforeBegin{console}{
-\mbox{}\\ 
+\mbox{}\\
 \begin{minipage}{\textwidth}\vspace{3pt}
 }
 \AfterEnd{console}{

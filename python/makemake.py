@@ -260,9 +260,9 @@ c:
 	rm -rf $(OBJS) $(EXE)
 
 run:
-	./$(EXE)
+	ASAN_OPTIONS=detect_leaks=1 ./$(EXE)
 r:
-	./$(EXE)
+	ASAN_OPTIONS=detect_leaks=1 ./$(EXE)
 """ % {'EXE': EXE,
        'filename': filename,
        'LINKFLAGS': LINKFLAGS,

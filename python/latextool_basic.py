@@ -2240,11 +2240,11 @@ def arc(x=0, y=0, r=0, angle0=0, angle1=0,
                    (style, x, y, angle0, angle1, r)
         elif startstyle =='>':
             return r"\draw[<-,%s] (%s,%s) arc (%s:%s:%s);" % \
-                   (style, x, y, angle0, angle1, r)
+                (style, x, y, angle0, angle1, r)
     elif endstyle == '>':
         if startstyle=='':
             return r"\draw[%s,->] (%s,%s) arc (%s:%s:%s);" % \
-                   (style, x, y, angle0, angle1, r)
+                (style, x, y, angle0, angle1, r)
         elif startstyle=='>':
             return r"\draw[%s,<->] (%s,%s) arc (%s:%s:%s);" % \
                    (style, x, y, angle0, angle1, r)
@@ -2714,6 +2714,7 @@ def exec_python(s):
     pass
 
 def pdflatex(filename):
+    print("pdflatex")
     if not filename.endswith('.tex'): filename += '.tex'
     d = {'filename':filename}
     cmd = 'pdflatex -halt-on-error --shell-escape %(filename)s' % d
@@ -2838,9 +2839,10 @@ def shell(cmd,
             if line != "":
                 t.append(line)
         s = '\n'.join(t)
-        s = r'''\begin{Verbatim}[frame=single,fontsize=%s]
+        # 2023/12/24: Change Verbatim to console ???????????????????
+        s = r'''\begin{console}[frame=single,fontsize=%s]
 %s
-\end{Verbatim}
+\end{console}
 ''' % (fontsize, s)
         #s = verbatim(s)
     os.chdir(cwd)
@@ -3109,10 +3111,11 @@ def frame(env, top='', W=1.2, H=0.6):
 def makepdf(latex,
             ahash=None,
             filename=None, # example: 'main'
+            tmp='tmp'
             ):
     if ahash==None: ahash = hash(latex)
     latex = latex.strip()
-    TMP = 'tmp'
+    TMP = tmp
     s = r"""
 \documentclass[a4paper,12pt]{scrbook}
 \usepackage{amsmath,amssymb,amsthm}
@@ -8544,7 +8547,7 @@ def ciss240_written_test_instructions():
     (i.e. it runs forever without stopping), write \verb!INFINITE LOOP!
     for the answer.
 
-\li When you're asked to write a C++ statement, don't forget that it must
+\li When you're asked to write a C\texttt{++} statement, don't forget that it must
     end with a semicolon.
     
 \li Unless otherwise stated, bubblesort refers to the bubblesort algorithm in
@@ -8619,17 +8622,28 @@ def ciss245_written_test_instructions():
 
 
     
-def honor_statement():
-    print(r'''
+def honor_statement(white_out=False):
+    if not white_out:
+        print(r'''
 \begin{center}
 \textsc{Honor Statement}
 \end{center}
-I, \answerbox{[REPLACE WITH YOUR FULLNAME]},
+I, \answerbox{[REPLACE WITH YOUR FULLNAME]}\ \ ,
 attest to the fact that the submitted work is my own and
 is not the result of plagiarism.
 Furthermore, I have not aided another student in the act of
 plagiarism.
+''')
+    else:
+        print(r'''
+\begin{center}
+\textsc{Honor Statement}
 \end{center}
+I, \answerbox{\textwhite{[REPLACE WITH YOUR FULLNAME]}},
+attest to the fact that the submitted work is my own and
+is not the result of plagiarism.
+Furthermore, I have not aided another student in the act of
+plagiarism.
 ''')
 
 #==============================================================================
@@ -8688,6 +8702,13 @@ def smallcircle(x, y, r='0.1cm', color='blue!20'):
     """ for small circles (because Circle class has problems """
     return r"\node[draw,shape=circle,minimum size=%s,fill=%s,line color=%s,inner sep=0](A) at (%s,%s){};" % (r, x, y, color)
 
+
+def test_preamble(course='ciss240', practice=False):
+    ciss240_written_test_instructions()
+    print(r"\mbox{}\vspace{1in}")
+    honor_statement(white_out=True)
+    if practice: practice_disclaimer()
+    test_score_table()
 
 
 if __name__ == '__main__':
