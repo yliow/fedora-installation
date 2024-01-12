@@ -82,3 +82,10 @@ chmod +rwx /usr/lib/python*.*/site-packages/
 cp -r ./python/* /usr/lib64/python*.*/site-packages/
 chmod +rwx /usr/lib64/python*.*/site-packages/
 #NEED TO ADD ALEX
+
+python3 -c 'import py_compile; py_compile.compile("alex.py");'
+
+cp -r alexrunner.py /home/student/.alex/alexrunner.py
+chmod +rwx /home/student/.alex/alexrunner.py
+cp -r alex.pyc /home/student/.alex/alex.pyc
+chmod +rwx /home/student/.alex/alex.pyc
