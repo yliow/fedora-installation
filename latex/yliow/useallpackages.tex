@@ -1,3 +1,13 @@
+% https://tex.stackexchange.com/questions/10706/pdftex-error-font-expansion-auto-expansion-is-only-possible-with-scalable
+% to fix
+%./fedora/glutPostRedisplay/glutPostRedisplay.tex:68: Extra \fi.
+%\AtBegShi@Output ...t \box \AtBeginShipoutBox \fi 
+%                                                  \fi 
+%l.68 
+
+%\usepackage[T1]{fontenc} % | CAUSES " to be straight quotes 
+%\usepackage{lmodern}     % |
+
 \usepackage{marginnote}
 \usepackage{setspace}
 
@@ -80,4 +90,4 @@
 \usepackage[makestderr]{pythontex}
 
 % ADDED 2023/08/12: for \cpp\
-\usepackage{relsize}
+%\usepackage{relsize} REMOVED ... use C\texttt{++}

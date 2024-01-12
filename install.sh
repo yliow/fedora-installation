@@ -62,7 +62,6 @@ dnf -y install httpd mysql mysql-server mysql-devel phpmyadmin
 dnf -y install python3-PyMySQL python3-sqlalchemy
 dnf -y install mod_wsgi
 
-
 # installing files where they need to be
 cp .bashrc ~/.bashrc
 cp -r .emacs ~/.emacs 
@@ -89,3 +88,6 @@ cp -r alexrunner.py /home/student/.alex/alexrunner.py
 chmod +rwx /home/student/.alex/alexrunner.py
 cp -r alex.pyc /home/student/.alex/alex.pyc
 chmod +rwx /home/student/.alex/alex.pyc
+
+# cp files
+#cp -r site-packages/* 

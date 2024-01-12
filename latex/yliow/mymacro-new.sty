@@ -283,15 +283,10 @@ prepare_solutions()}
 prepare_solutions()}
 \newpage
 \input{solutions.tex}
-%\pyc{import os; os.remove('solutions.tex')} % pyc seems to have caching
-%\pyc{from solutions import *;
-%clear()}
-%\begin{python0}
-%from solutions import *; clear()
-%\end{python0}
-%
 \newpage
-\section{#1 \textnormal{\tiny{\debug{\currfilename}}}}}
+\section{#1 \textnormal{\tiny{\debug{\currfilename}}}}
+%\section{#1}
+}
 
 \input{myhyperref.tex}
 
@@ -361,7 +356,7 @@ prepare_solutions()}
 %==============================================================================
 % to indicate user input in verbatim  
 %==============================================================================
-\newcommand\userinput[1]{\underline{#1}}
+\newcommand\userinput[1]{\underline{\texttt{#1}}}
 
 
 %==============================================================================
@@ -427,3 +422,34 @@ prepare_solutions()}
 
 % for axioms -- see projects/calculus
 \newcommand\defaxiom[1]{\textsc{#1}\textnormal{:}\index{#1}\tinysidebar{\textsc{#1}}}
+
+%===============================================================================
+% Make single quote straight in texttt. See also \userinput.
+% https://tex.stackexchange.com/questions/436308/changing-all-single-quotes-to-be-straight-when-within-texttt
+%
+% 2023/10/18. ERROR: The below will cause problems in Verbatim!!!!!!!!
+%===============================================================================
+%\usepackage{textcomp,lmodern,letltxmacro}
+%\LetLtxMacro{\svtexttt}{\texttt}
+%\catcode`'=\active %
+%\let\svprime'
+%\renewcommand\texttt{\catcode`'=\active \def'{\textquotesingle}\textttaux}
+%\newcommand\textttaux[1]{\svtexttt{#1}\gdef'{\svprime}\catcode`'=12 }
+%\catcode`'=12 %
+
+%===============================================================================
+% Test cases: counter and header
+% USAGE:
+%    \resettt
+%    \nextt
+%    \begin{console}
+%    \userinput{1, 2}
+%    3
+%    \end{console}
+%===============================================================================
+\newcounter{tc}                        % test case counter
+\newcommand\resett{\setcounter{tc}{0}} % reset test case counter 
+\newcommand\nextt{                     % inc test case counter and print
+\addtocounter{tc}{1}
+\textsc{Test {\thetc}}
+}

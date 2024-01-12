@@ -19,3 +19,4 @@ alias alex='python /home/student/.alex/alexrunner.py'
 export EDITOR='emacs'
 
 umask 077
+eval `opam config env`
