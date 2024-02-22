@@ -233,7 +233,8 @@ def cpp_makefile(main = 'main',
 # Macros
 #------------------------------------------------------------------------------
 CXX       = g++
-CXXFLAGS  = -g -Wall -fmax-errors=3
+CXXFLAGS  = -c -std=c++2a -fmax-errors=3 -Wall -Werror -Wextra -Wpedantic \
+	    -Wconversion
 LINK      = g++
 LINKFLAGS = %(LINKFLAGS)s
 OBJS      = %(OBJS)s
