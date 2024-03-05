@@ -32,6 +32,7 @@ dnf -y install SDL_image-devel SDL_ttf-devel SDL_mixer-devel
 dnf -y install texlive texlive-latex texlive-import
 dnf -y install texlive-lipsum texlive-lastpage texlive-upquote
 dnf -y install texlive-boxedminipage texlive-ulem texlive-cancel
+dnf -y install texlive-comment texlive-tikz-cd texlive-pythontex texlive-fvextra
 
 # Miscellaneous software that should be installed:
 # pluma, tar, gzip, bzip2, rsync, firefox, caja, Atril
@@ -77,9 +78,9 @@ else
 fi
 
 cp -r ./python/* /usr/lib/python*.*/site-packages/
-chmod +rwx /usr/lib/python*.*/site-packages/
+chmod a+rwx /usr/lib/python*.*/site-packages/ # adding 'a' to the chmod +rwx so that LaTeX compiling will work with Liow and his new packages (rh)
 cp -r ./python/* /usr/lib64/python*.*/site-packages/
-chmod +rwx /usr/lib64/python*.*/site-packages/
+chmod a+rwx /usr/lib64/python*.*/site-packages/
 #NEED TO ADD ALEX
 
 python3 -c 'import py_compile; py_compile.compile("alex.py");'
